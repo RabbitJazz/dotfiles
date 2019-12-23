@@ -23,7 +23,7 @@ source ~/zsh/Plugins/zsh-autosuggestions-master/zsh-autosuggestions.zsh
 source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 source ~/zsh/Plugins/zsh-z/zsh-z.plugin.zsh
 source $(dirname $(gem which colorls))/tab_complete.sh
-tmux source ~/.config/.tmux.conf
+tmux source ~/dotfiles/.tmux.conf
 
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
