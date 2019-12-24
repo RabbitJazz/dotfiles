@@ -157,11 +157,13 @@ function mkcd()
 	mkdir $1 && cd $1
 }
 
-
+function chpwd() {
+    emulate -L zsh
+    colorls --sd -a
+}
 ###################
 ##    ALIASES    ##
 ###################
-
 alias yt="youtube-dl -f 18"
 alias clr="clear"
 alias dev="cd ~/dev"
