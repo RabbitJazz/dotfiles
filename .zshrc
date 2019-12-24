@@ -191,7 +191,7 @@ alias gi='git init'
 alias gl='git log'
 alias gp='git pull'
 alias gpsh='git push'
-alias gs='git status -s'
+alias gs='git status'
 alias gitf='cd /Users/sage/dev/Ready_4Git'
 
 
