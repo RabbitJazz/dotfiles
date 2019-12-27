@@ -175,7 +175,8 @@ alias lt='colorls --tree'
 alias l='colorls --sd -A'
 alias ld='colorls -d'
 alias src='source'
-alias o="open ." # Open the current directory in Finder
+alias o='open .' # Open the current directory in Finder
+alias v='vim'
 #######################
 ##    GIT ALIASES    ##
 #######################
