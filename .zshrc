@@ -195,5 +195,20 @@ alias gpsh='git push'
 alias gs='git status'
 alias gitf='cd /Users/sage/dev/Ready_4Git'
 
+#######################
+##    TMUX ALIASES   ##
+#######################
 
+alias tnews='tnew_session'
+alias tls='tmux list-session'
+alias tlw='tmux list-window'
+alias tsw='tmux switch --t '
+alias tlc='tmux list-command'
+alias tat='tmux attach --t'
+alias trs='tmux rename-session --t'
+alias tks='tmux kill-session --t'
+alias tkss='tmux kill-server --t'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
