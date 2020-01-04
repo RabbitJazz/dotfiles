@@ -218,5 +218,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Symlink ignore
 .zshrc
 .vimrc
