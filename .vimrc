@@ -5,10 +5,6 @@ scriptencoding utf-8
 " Syntax highlighting
 syntax on
 
-" Enable all python syntax highlighting features
-let python_highlight_all = 1
-
-
 "commentary Show command in status-bar
 set showcmd
 
@@ -87,7 +83,7 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'mileszs/ack.vim'
     if executable('rg')
         let g:ackprg = '/usr/local/bin/rg --vimgrep'
-        nnoremap <leader>a :Ack!
+        nno emap <leader>a :Ack!
     endif
 " File searching
     Plug 'junegunn/fzf.vim'
@@ -204,6 +200,24 @@ endfor
 copen
 endfunction
 
+" Column limits
+set textwidth=110
+set colorcolumn=110
+" Toggle between column widths
+nnoremap <leader>c :call ToggleColumnWidth()<cr>
+let g:wide_column = 1
+function! ToggleColumnWidth()
+    if g:wide_column
+        set textwidth=80
+        set colorcolumn=80
+        let g:wide_column = 0
+    else
+        set textwidth=110
+        set colorcolumn=110
+        let g:wide_column = 1
+    endif
+endfunction
+
 " Load back into the same line as before
 augroup BufRead
     autocmd BufReadPost *
@@ -264,7 +278,7 @@ let g:lightline.inactive = {
 	\            [ 'percent' ] ] }
 let g:lightline.tabline = {
 	\ 'left': [ [ 'buffers' ] ],
-	\ 'right': [ [ 'close' ] ]
+	\ 'right': [ [ 'branch' ] ]
     \}
 let g:lightline.component_expand = {
       \  'linter_checking': 'lightline#ale#checking',
@@ -289,6 +303,7 @@ let g:lightline#ale#indicator_checking = "\uf110 "
 let g:lightline#ale#indicator_warnings = "\uf071 "
 let g:lightline#ale#indicator_errors = "\ue009 "
 let g:lightline#bufferline#show_number  = 2
+let g:lightline#bufferline#modified = '[+]'
 let g:lightline#bufferline#unnamed = '[No Name]'
 let g:lightline#bufferline#filename_modifier = ':t'
 let g:lightline#bufferline#number_separator = ' '
@@ -351,10 +366,6 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
 nmap <leader>f  <Plug>(coc-format-selected)
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
@@ -377,7 +388,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
@@ -402,7 +413,6 @@ colorscheme gruvbox
 let g:gruvbox_dark_bold = 1
 let g:gruvbox_dark_contrast = 'medium'
 let g:gruvbox_italicize_comments = 1
-let g:lightline#bufferline#modified = '[+]'
 
 " Necessary for Pathogen
 packloadall
